@@ -1,0 +1,1254 @@
+/* =========================================================
+   DASHBOARD — all rules scoped under .dash / .dash-*
+   ========================================================= */
+
+.dash {
+  --d-navy: #111827;
+  --d-navy-dark: #0b1220;
+  --d-gold: #f5b800;
+  --d-gold-soft: #fff8db;
+  --d-blue: #2563eb;
+  --d-green: #16a34a;
+  --d-red: #ef4444;
+  --d-bg: #f7f8fa;
+  --d-text: #111827;
+  --d-muted: #6b7280;
+  --d-border: #e5e7eb;
+  --d-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+  color: var(--d-text);
+  overflow-x: hidden;
+}
+
+.dash *,
+.dash *::before,
+.dash *::after {
+  box-sizing: border-box;
+}
+
+.dash a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- Hero ---------- */
+.dash-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 40px 36px 32px;
+  color: #fff;
+  background:
+    radial-gradient(600px 240px at 90% 0%, rgba(37, 99, 235, 0.35), transparent 70%),
+    linear-gradient(135deg, var(--d-navy-dark) 0%, var(--d-navy) 100%);
+  box-shadow: var(--d-shadow);
+}
+
+.dash-hero-art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* parking-bay lines fading in from the right */
+  background: repeating-linear-gradient(
+    115deg,
+    transparent 0 46px,
+    rgba(255, 255, 255, 0.06) 46px 48px
+  );
+  -webkit-mask-image: linear-gradient(to left, #000 0%, transparent 65%);
+  mask-image: linear-gradient(to left, #000 0%, transparent 65%);
+}
+
+/* Real parking photo, fading into the navy on the left */
+.dash-hero-photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 52%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 60%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 60%);
+}
+
+.dash-hero-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.dash-hero-body {
+  position: relative;
+  max-width: 680px;
+}
+
+.dash-hero-eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--d-gold);
+}
+
+.dash-hero-title {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.dash-hero-sub {
+  margin: 8px 0 22px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.dash-hero-hint {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- Search bar ---------- */
+.dash-search {
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dash-search-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: var(--d-bg);
+  color: var(--d-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dash-search-field--grow {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-search-field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  color: var(--d-text);
+}
+
+.dash-search-field input::placeholder {
+  color: var(--d-muted);
+}
+
+.dash-search-field:focus-within {
+  box-shadow: 0 0 0 2px rgba(245, 184, 0, 0.55);
+}
+
+.dash-search-date {
+  color: var(--d-text);
+  white-space: nowrap;
+}
+
+/* ---------- Buttons ---------- */
+.dash-btn-gold {
+  min-height: 48px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--d-gold);
+  color: var(--d-navy);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.dash-btn-gold:hover {
+  filter: brightness(0.96);
+}
+
+.dash-btn-gold:active {
+  transform: translateY(1px);
+}
+
+.dash-btn-gold:focus-visible {
+  outline: 2px solid var(--d-navy);
+  outline-offset: 2px;
+}
+
+.dash-btn-outline {
+  display: block;
+  padding: 10px 14px;
+  border: 1px solid var(--d-border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--d-navy);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.dash-lot:hover .dash-btn-outline,
+.dash-recent:hover .dash-btn-outline {
+  background: var(--d-navy);
+  border-color: var(--d-navy);
+  color: #fff;
+}
+
+.dash-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--d-blue);
+  cursor: pointer;
+}
+
+.dash-link-btn:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Summary strip ---------- */
+.dash-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin-top: 16px;
+  padding: 0 4px;
+  font-size: 13px;
+  color: var(--d-muted);
+}
+
+.dash-summary strong {
+  color: var(--d-text);
+  font-weight: 700;
+}
+
+/* ---------- Sections ---------- */
+.dash-section {
+  margin-top: 32px;
+  scroll-margin-top: 80px;
+}
+
+.dash-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.dash-section-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--d-text);
+}
+
+.dash-section-sub {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--d-muted);
+}
+
+/* ---------- Vehicle selector ---------- */
+.dash-vehicles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.dash-vehicle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 12px 14px;
+  border: 1.5px solid var(--d-border);
+  border-radius: 16px;
+  background: #fff;
+  font: inherit;
+  color: var(--d-text);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dash-vehicle:hover {
+  border-color: #d1d5db;
+  box-shadow: var(--d-shadow);
+}
+
+.dash-vehicle:focus-visible {
+  outline: 2px solid var(--d-blue);
+  outline-offset: 2px;
+}
+
+.dash-vehicle--selected,
+.dash-vehicle--selected:hover {
+  border-color: var(--d-gold);
+  background: var(--d-gold-soft);
+}
+
+.dash-vehicle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 84px;
+  overflow: hidden;
+}
+
+.dash-vehicle-icon img {
+  display: block;
+  width: auto;
+  height: 84px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 8px rgba(17, 24, 39, 0.18));
+}
+
+.dash-vehicle-label {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.dash-vehicle-count {
+  font-size: 12px;
+  color: var(--d-muted);
+}
+
+.dash-vehicle-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--d-gold);
+  color: var(--d-navy);
+}
+
+/* ---------- Nearby parking cards ---------- */
+.dash-lots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dash-lot {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--d-border);
+  border-radius: 18px;
+  background: #fff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dash-lot:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--d-shadow);
+}
+
+.dash-lot:focus-visible,
+.dash-recent:focus-visible {
+  outline: 2px solid var(--d-blue);
+  outline-offset: 2px;
+}
+
+.dash-lot-media {
+  aspect-ratio: 16 / 10;
+  background: #eef1f5;
+}
+
+.dash-lot-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dash-lot-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+  padding: 14px 14px 16px;
+  min-width: 0;
+}
+
+.dash-lot-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--d-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dash-lot-loc {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--d-muted);
+  min-width: 0;
+}
+
+.dash-lot-loc svg {
+  flex-shrink: 0;
+}
+
+.dash-lot-loc > span:not(.dash-lot-dist) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dash-lot-dist {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.dash-lot-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 2px 0 4px;
+}
+
+.dash-avail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--d-green);
+}
+
+.dash-avail-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.dash-avail--full {
+  color: var(--d-red);
+}
+
+.dash-lot-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--d-text);
+}
+
+.dash-lot-price small {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--d-muted);
+}
+
+.dash-lot-body .dash-btn-outline {
+  margin-top: auto;
+}
+
+.dash-lot-skeleton {
+  height: 300px;
+  border-radius: 18px;
+}
+
+.dash-empty {
+  padding: 28px 16px;
+  border: 1px dashed var(--d-border);
+  border-radius: 16px;
+  background: #fff;
+  text-align: center;
+  font-size: 14px;
+  color: var(--d-muted);
+}
+
+/* ---------- Recent booking ---------- */
+.dash-recent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid var(--d-border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+}
+
+.dash-recent-img {
+  flex-shrink: 0;
+  width: 112px;
+  height: 84px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #eef1f5;
+}
+
+.dash-recent-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-recent-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.dash-recent-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--d-muted);
+}
+
+.dash-recent-when svg:not(:first-child) {
+  margin-left: 8px;
+}
+
+.dash-recent-btn {
+  flex-shrink: 0;
+  min-width: 120px;
+}
+
+.dash-status {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dash-status--confirmed {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.dash-status--completed {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.dash-status--cancelled {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* ---------- Slot section wrapper ---------- */
+.dash-slots-card {
+  padding: 20px;
+  border: 1px solid var(--d-border);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 960px) {
+  .dash-lots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .dash {
+    padding: 16px 16px calc(96px + env(safe-area-inset-bottom));
+  }
+
+  .dash-hero {
+    padding: 26px 18px 22px;
+    border-radius: 18px;
+  }
+
+  .dash-hero-title {
+    font-size: 26px;
+  }
+
+  .dash-hero-sub {
+    margin-bottom: 18px;
+    font-size: 14px;
+  }
+
+  .dash-hero-photo {
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  }
+
+  .dash-hero-photo img {
+    opacity: 0.3;
+  }
+
+  .dash-search {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dash-btn-gold {
+    width: 100%;
+  }
+
+  .dash-section {
+    margin-top: 26px;
+  }
+
+  .dash-section-title {
+    font-size: 18px;
+  }
+
+  .dash-vehicles {
+    gap: 10px;
+  }
+
+  .dash-vehicle {
+    padding: 14px 6px 12px;
+  }
+
+  .dash-vehicle-icon,
+  .dash-vehicle-icon img {
+    height: 60px;
+  }
+
+  /* Compact horizontal cards */
+  .dash-lots {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .dash-lot {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .dash-lot-media {
+    flex-shrink: 0;
+    width: 112px;
+    aspect-ratio: auto;
+  }
+
+  .dash-lot-body {
+    gap: 5px;
+    padding: 12px;
+  }
+
+  .dash-lot-name {
+    font-size: 15px;
+  }
+
+  .dash-lot-meta {
+    margin: 0;
+  }
+
+  .dash-lot-price {
+    font-size: 16px;
+  }
+
+  .dash-lot-body .dash-btn-outline {
+    padding: 8px 12px;
+  }
+
+  .dash-lot-skeleton {
+    height: 132px;
+  }
+
+  .dash-recent {
+    flex-wrap: wrap;
+  }
+
+  .dash-recent-img {
+    width: 92px;
+    height: 72px;
+  }
+
+  .dash-recent-btn {
+    width: 100%;
+  }
+
+  .dash-slots-card {
+    padding: 14px;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .dash-hero-title {
+    font-size: 23px;
+  }
+
+  .dash-lot-media {
+    width: 96px;
+  }
+}
+
+
+/* =========================================================
+   ADVANCED LAYER — glass chips, availability bars, motion
+   ========================================================= */
+
+.dash-hero::after {
+  content: "";
+  position: absolute;
+  left: -80px;
+  bottom: -120px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 184, 0, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.dash-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dash-chip {
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+}
+
+.dash-chip strong {
+  color: var(--d-gold);
+  font-weight: 800;
+}
+
+.dash-search {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Section titles get a gold tick */
+.dash-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dash-section-title::before {
+  content: "";
+  width: 4px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--d-gold);
+}
+
+/* Vehicle cards */
+.dash-vehicle:hover .dash-vehicle-icon img {
+  transform: scale(1.05);
+}
+
+.dash-vehicle-icon img {
+  transition: transform 0.25s ease;
+}
+
+.dash-vehicle--selected {
+  box-shadow: 0 0 0 4px rgba(245, 184, 0, 0.18), var(--d-shadow);
+}
+
+.dash-vehicle:active {
+  transform: scale(0.98);
+}
+
+/* Parking cards */
+.dash-lot {
+  position: relative;
+  animation: dash-rise 0.45s ease both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+.dash-lot:hover {
+  box-shadow: 0 14px 32px rgba(17, 24, 39, 0.14);
+}
+
+.dash-lot-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.dash-lot-media img {
+  transition: transform 0.5s ease;
+}
+
+.dash-lot:hover .dash-lot-media img {
+  transform: scale(1.06);
+}
+
+.dash-lot-media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 45%;
+  background: linear-gradient(to top, rgba(11, 18, 32, 0.45), transparent);
+  pointer-events: none;
+}
+
+.dash-lot-progress {
+  display: none 
+}
+.dash-lot-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.15);
+}
+
+.dash-lot--open .dash-lot-tag { color: var(--d-green); }
+.dash-lot--limited .dash-lot-tag { color: #b45309; }
+.dash-lot--full .dash-lot-tag { color: var(--d-red); }
+
+.dash-lot--limited .dash-avail { color: #b45309; }
+.dash-lot--full .dash-avail { color: var(--d-red); }
+
+.dash-bar {
+  height: 6px;
+  margin: 2px 0 6px;
+  border-radius: 999px;
+  background: var(--d-border);
+  overflow: hidden;
+}
+
+.dash-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--d-green);
+  transition: width 0.6s ease;
+}
+
+.dash-lot--limited .dash-bar span { background: var(--d-gold); }
+.dash-lot--full .dash-bar span { background: var(--d-red); }
+
+/* Recent booking */
+.dash-recent {
+  border-left: 4px solid var(--d-gold);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dash-recent:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--d-shadow);
+}
+
+/* Entrance */
+.dash-hero,
+.dash-section {
+  animation: dash-rise 0.5s ease both;
+}
+
+@keyframes dash-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 768px) {
+  /* chips scroll inside the hero, never the page */
+  .dash-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-right: -18px;
+    padding-right: 18px;
+    scrollbar-width: none;
+  }
+
+  .dash-chips::-webkit-scrollbar { display: none; }
+
+  .dash-lot-tag { top: 8px; left: 8px; font-size: 10px; padding: 3px 8px; }
+  .dash-lot-media img { height: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash *, .dash *::before, .dash *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   MOBILE DASHBOARD SEARCH
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .dash-hero {
+    min-height: 410px;
+    border-radius: 22px;
+    margin: 14px 0 0;
+  }
+
+  .dash-hero-body {
+    padding: 28px 22px 24px;
+  }
+
+  .dash-hero-title {
+    font-size: 32px;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .dash-hero-sub {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  /* Search form */
+  .dash-search {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 22px;
+    box-sizing: border-box;
+  }
+
+  /* Search input */
+  .dash-search-field--grow {
+    width: 100%;
+    min-width: 0;
+    height: 54px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    border: 2px solid #f3c62d;
+    border-radius: 16px;
+    background: #ffffff;
+  }
+
+  .dash-search-field--grow svg {
+    flex: 0 0 auto;
+    color: #6b7280;
+  }
+
+  .dash-search-field--grow input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    color: #111827;
+    box-sizing: border-box;
+  }
+
+  .dash-search-field--grow input::placeholder {
+    color: #8b93a1;
+  }
+
+  .dash-search-field--grow input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Today */
+  .dash-search-date {
+    width: 100%;
+    min-width: 0;
+    height: 54px;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background: #f7f7f7;
+    color: #252525;
+  }
+
+  .dash-search-date svg {
+    flex: 0 0 auto;
+  }
+
+  /* Find Parking */
+  .dash-search .dash-btn-gold {
+    width: 100%;
+    height: 58px;
+    min-height: 58px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    border: 0;
+    cursor: pointer;
+  }
+
+  /* Vehicle section */
+  .dash-section {
+    margin-top: 28px;
+  }
+
+  .dash-section-title {
+    font-size: 24px;
+  }
+
+  /* Keep vehicle cards in one row */
+  .dash-vehicles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .dash-vehicle {
+    min-width: 0;
+    padding: 12px 7px;
+    border-radius: 16px;
+  }
+
+  .dash-vehicle-icon {
+    width: 100%;
+    height: 76px;
+  }
+
+  .dash-vehicle-icon img {
+    max-width: 100%;
+    max-height: 70px;
+    object-fit: contain;
+  }
+
+  .dash-vehicle-label {
+    font-size: 16px;
+  }
+
+  .dash-vehicle-count {
+    font-size: 12px;
+  }
+
+  /* Nearby parking */
+  .dash-lots {
+    gap: 12px;
+  }
+
+  .dash-lot {
+    border-radius: 18px;
+  }
+
+  /* Give page enough room above fixed mobile navigation */
+  .dash {
+    padding-bottom: 100px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE BOTTOM NAV
+   Explore | My Vehicles | My Bookings
+   ========================================================= */
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    z-index: 9999;
+
+    height: 66px;
+    padding: 6px;
+
+    align-items: stretch;
+    justify-content: space-between;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+
+    box-shadow:
+      0 10px 30px rgba(15, 23, 42, 0.14),
+      0 2px 8px rgba(15, 23, 42, 0.06);
+  }
+
+  .mobile-bottom-nav__item {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    color: #9aa3b2;
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    border-radius: 14px;
+  }
+
+  .mobile-bottom-nav__item svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-bottom-nav__item.is-active {
+    color: #8a6a00;
+    background: #fff6dc;
+  }
+}
+/* =========================================================
+   MOBILE BOTTOM NAVIGATION
+   ========================================================= */
+
+.mobile-dashboard-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  /* Mobile par upar wala Navbar hide */
+  .dashboard-top-navbar {
+    display: none !important;
+  }
+
+  /* Bottom navbar */
+  .mobile-dashboard-nav {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    height: 66px;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+
+    padding: 6px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+
+    box-shadow:
+      0 10px 30px rgba(15, 23, 42, 0.16),
+      0 3px 8px rgba(15, 23, 42, 0.08);
+
+    z-index: 99999;
+  }
+
+  .mobile-dashboard-nav__item {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    color: #9aa3b2;
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    border-radius: 14px;
+  }
+
+  .mobile-dashboard-nav__item svg {
+    flex-shrink: 0;
+  }
+
+  .mobile-dashboard-nav__item.active {
+    color: #2563eb;
+    background: #eef4ff;
+  }
+
+  /* Bottom nav ke peeche content hide na ho */
+  .dash {
+    padding-bottom: 100px !important;
+  }
+}
+
+@media (max-width: 380px) {
+
+  .mobile-dashboard-nav {
+    left: 7px;
+    right: 7px;
+    bottom: 7px;
+    height: 62px;
+  }
+
+  .mobile-dashboard-nav__item {
+    font-size: 9px;
+  }
+
+  .mobile-dashboard-nav__item svg {
+    width: 19px;
+    height: 19px;
+  }
+}

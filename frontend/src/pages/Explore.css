@@ -1,0 +1,450 @@
+.explore-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid #dfeaf5;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+}
+
+.explore-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text);
+}
+.explore-search-input::placeholder { color: var(--text-muted); }
+
+.explore-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.explore-filter-chip {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid #dfeaf5;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 180ms ease;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+}
+
+.explore-filter-chip:hover {
+  border-color: #bfdbfe;
+  transform: translateY(-1px);
+}
+
+.explore-filter-chip-active {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+}
+
+.explore-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .explore-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .explore-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .explore-filters::-webkit-scrollbar { display: none; }
+
+  .explore-filter-chip {
+    white-space: nowrap;
+  }
+
+  .explore-list { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   PARKING CARD (Explore grid) — Night Garage palette, no green
+   ========================================================= */
+.parking-card {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 180ms ease, border-color 180ms ease, transform 180ms ease;
+  text-align: left;
+}
+
+.parking-card:hover {
+  box-shadow: 0 14px 26px rgba(15, 23, 42, 0.08);
+  border-color: #bfdbfe;
+  transform: translateY(-2px);
+}
+
+.parking-card:focus-visible {
+  outline: 2px solid #0891B2;
+  outline-offset: 2px;
+}
+
+.parking-card-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #F1F1F1;
+  overflow: hidden;
+}
+
+.parking-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.parking-card-availability-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  box-shadow: 0 6px 12px rgba(16, 185, 129, 0.2);
+}
+
+.parking-card-availability-badge-full {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.18);
+}
+
+.parking-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 16px 18px;
+  flex: 1;
+}
+
+.parking-card-name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.parking-card-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #57534E;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.parking-card-distance {
+  color: #A8A29E;
+  flex-shrink: 0;
+}
+
+.parking-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #edf2f7;
+}
+
+.parking-card-price-value {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.parking-card-price-unit {
+  font-size: 12px;
+  color: #57534E;
+  margin-left: 2px;
+}
+
+.parking-card-details-btn {
+  padding: 8px 14px;
+  font-size: 12.5px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.12);
+}
+
+.explore-lot-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 18px;
+  text-align: left;
+  background: var(--surface);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.explore-lot-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--border-strong);
+}
+
+.explore-lot-address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.explore-lot-distance {
+  color: var(--text-muted);
+}
+
+/* Image-first parking cards */
+.parking-card {
+  min-height: 100%;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.parking-card:hover {
+  transform: translateY(-2px);
+  border-color: #bfdbfe;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+.parking-card-image-wrap {
+  height: 190px;
+  aspect-ratio: auto;
+  background: #e2e8f0;
+  border-radius: 13px 13px 0 0;
+}
+
+.parking-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.parking-card-availability-badge {
+  top: 12px;
+  right: 12px;
+  padding: 5px 9px;
+  background: #16a34a;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.14);
+}
+
+.parking-card-availability-badge-full {
+  background: #dc2626;
+}
+
+.parking-card-body {
+  min-height: 142px;
+  padding: 16px;
+  gap: 7px;
+}
+
+.parking-card-name {
+  color: #0f172a;
+  font-size: 16px;
+}
+
+.parking-card-location {
+  color: #64748b;
+}
+
+.parking-card-footer {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.parking-card-price-value {
+  color: #0f172a;
+  font-size: 17px;
+}
+
+.parking-card-details-btn {
+  border-radius: 9px;
+  padding: 8px 12px;
+}
+
+@media (max-width: 640px) {
+  .parking-card-image-wrap { height: 200px; }
+}
+
+/* ===== Explore: list (left) + map (right) layout ===== */
+.explore-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.explore-layout-map {
+  position: sticky;
+  top: 16px;
+  min-height: 520px;
+}
+
+.explore-list {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+/* Horizontal parking card */
+.parking-card {
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.parking-card-image-wrap {
+  width: 130px;
+  height: auto;
+  min-height: 110px;
+  flex-shrink: 0;
+  border-radius: 13px 0 0 13px;
+}
+
+.parking-card-body {
+  min-height: 0;
+  min-width: 0;
+  padding: 12px 14px;
+  gap: 6px;
+}
+
+.parking-card-name { font-size: 15px; }
+
+.parking-card-footer {
+  margin-top: auto;
+  padding-top: 0;
+  border-top: none;
+}
+
+.parking-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* Slots badge now sits in the footer row */
+.parking-card-availability-badge {
+  position: static;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.parking-card-price-value { font-size: 14px; }
+
+/* Yellow View Details button */
+.parking-card-details-btn {
+  background: #f5b400;
+  border: none;
+  color: #1f2937;
+  font-weight: 700;
+}
+.parking-card-details-btn:hover { background: #e0a400; }
+
+@media (max-width: 900px) {
+  .explore-layout { grid-template-columns: 1fr; }
+  .explore-layout-map { position: static; order: -1; min-height: 0; }
+}
+
+@media (max-width: 640px) {
+  .parking-card-image-wrap { width: 96px; height: auto; }
+  .parking-card-footer { flex-wrap: wrap; }
+}
+
+/* ===== Fixes: button color, address wrap, search ring, map alignment ===== */
+
+/* 1. Yellow View Details (higher specificity beats global .btn-secondary) */
+.parking-card .parking-card-details-btn.btn-secondary {
+  background: #f5b400;
+  border: none;
+  color: #1f2937;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(245, 180, 0, 0.25);
+}
+.parking-card .parking-card-details-btn.btn-secondary:hover {
+  background: #e0a400;
+}
+
+/* 2. Address: wrap to 2 lines instead of cutting */
+.parking-card-location {
+  align-items: flex-start;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+.parking-card-location > span:not(.parking-card-distance) {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+}
+
+/* 3. Remove the extra inner ring on the search input */
+.explore-search-input,
+.explore-search-input:focus,
+.explore-search-input:focus-visible {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.explore-search:focus-within {
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* 4. Align map top with the first card */
+.explore-layout-map {
+  margin-top: 36px;
+}
+@media (max-width: 900px) {
+  .explore-layout-map { margin-top: 0; }
+}

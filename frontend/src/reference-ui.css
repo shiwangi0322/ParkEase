@@ -1,0 +1,992 @@
+/* =========================================================
+   ParkEase — reference-image visual system
+   Visual-only overrides. No business logic or API behavior.
+   ========================================================= */
+
+:root{
+  --ref-bg:#f7f8fa;
+  --ref-surface:#fff;
+  --ref-text:#111827;
+  --ref-muted:#6b7280;
+  --ref-border:#e5e7eb;
+  --ref-gold:#f5b800;
+  --ref-gold-soft:#fff7d9;
+  --ref-blue:#2563eb;
+  --ref-green:#16a34a;
+  --ref-red:#ef4444;
+}
+
+body{background:var(--ref-bg)}
+.page-wrapper{background:var(--ref-bg)}
+.page-content,.page-content-narrow{max-width:1240px;padding:24px}
+.text-page-title{font-size:26px;font-weight:800;letter-spacing:-.035em;color:var(--ref-text)}
+.text-section-title{font-size:17px;font-weight:750;color:var(--ref-text)}
+.text-secondary{font-size:12px;color:var(--ref-muted)}
+
+/* Navbar */
+.navbar{height:64px;background:#fff;border-bottom:1px solid #edf0f3;box-shadow:0 1px 5px rgba(17,24,39,.025)}
+.navbar-inner{max-width:1240px;height:64px;padding:0 24px}
+.navbar-logo{gap:8px;margin-right:18px}.navbar-logo-mark{width:32px;height:32px;border-radius:9px;background:var(--ref-gold);color:#111827;font-size:15px}.navbar-logo-text{font-size:17px;font-weight:800}
+.navbar-links{gap:2px}.navbar-link{padding:8px 11px;border-radius:9px;font-size:12px;font-weight:650}.navbar-link-icon svg{width:15px;height:15px}.navbar-link-active{background:var(--ref-gold-soft);color:#7a5c00}
+.navbar-right{gap:8px}.navbar-avatar{width:32px;height:32px;background:#eff6ff;color:var(--ref-blue);border:1px solid #bfdbfe}.navbar-username{font-size:12px;font-weight:650;color:#374151}
+.navbar-logout-btn{padding:7px 12px!important;border-radius:9px!important;font-size:12px!important}
+
+/* Shared buttons */
+.btn-primary{background:var(--ref-gold);color:#111827;border-radius:9px;box-shadow:none}.btn-primary:hover:not(:disabled){background:#e4ab00;box-shadow:0 5px 14px rgba(245,184,0,.2)}
+.btn-secondary{border-radius:9px;padding:9px 14px;background:#fff;border-color:var(--ref-border);font-size:12px}
+.btn-danger{border-radius:9px}
+
+/* Explore */
+.explore-search{height:44px;background:#fff;border:1px solid var(--ref-border);border-radius:11px;box-shadow:0 3px 12px rgba(17,24,39,.035);padding:0 13px}.explore-search-input{font-size:12px}
+.explore-filters{gap:7px;margin:10px 0 14px}.explore-filter-chip{border:1px solid var(--ref-border);background:#fff;border-radius:8px;padding:7px 10px;font-size:10px;font-weight:700;color:#4b5563}.explore-filter-chip-active{background:var(--ref-gold-soft);border-color:#f5b800;color:#7a5c00}
+.explore-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.explore-list .parking-card{border-radius:12px;box-shadow:0 4px 14px rgba(17,24,39,.045);border-color:var(--ref-border)}
+
+/* Map */
+.parking-map-wrap{position:relative;border:1px solid var(--ref-border);border-radius:15px;overflow:hidden;background:#fff;box-shadow:0 5px 18px rgba(17,24,39,.06);margin:12px 0 14px}
+.parking-map-container{height:470px;width:100%}
+.parking-map-user-dot{width:14px;height:14px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 0 0 5px rgba(37,99,235,.2),0 2px 6px rgba(0,0,0,.2);display:block}
+.parking-map-marker{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 3px 9px rgba(17,24,39,.22);border:2px solid #fff}.parking-map-marker__pin{transform:rotate(45deg);font-size:11px;font-weight:900;color:#fff}
+.parking-map-marker--available{background:#16a34a}.parking-map-marker--limited{background:#f5b800}.parking-map-marker--occupied{background:#ef4444}.parking-map-marker.is-selected{outline:3px solid rgba(245,184,0,.35)}
+.parking-map-user-marker{background:transparent!important;border:0!important}.parking-map-locate-btn,.parking-map-empty-location-btn{border-radius:9px!important}
+
+/* Parking details */
+.details-back{border:0;background:transparent;color:#6b7280;font-size:12px;font-weight:700;padding:3px 0;margin-bottom:12px}.details-back:hover{color:#111827}
+.details-hero,.details-card{border-radius:15px!important;border:1px solid var(--ref-border)!important;box-shadow:0 5px 18px rgba(17,24,39,.045)!important;background:#fff!important}
+.details-stat{border-radius:10px!important;background:#fff!important;border-color:var(--ref-border)!important}
+.details-amenities{gap:8px}.details-amenities>*{border:1px solid var(--ref-border);border-radius:10px;background:#fff}
+.details-directions-btn{border-radius:9px!important}
+
+/* Bookings */
+.page-content-narrow:has(.booking-card){max-width:920px}
+.page-content-narrow > div[style*="flex-direction: column"]{gap:10px!important}
+.booking-card{border-radius:13px!important;border:1px solid var(--ref-border)!important;box-shadow:0 4px 14px rgba(17,24,39,.045)!important;background:#fff!important}
+
+/* Vehicles */
+.vehicles-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.vehicles-grid > *{border-radius:13px!important;border:1px solid var(--ref-border)!important;box-shadow:0 4px 14px rgba(17,24,39,.045)!important;background:#fff!important}
+
+/* Booking modal */
+.modal-overlay{background:rgba(17,24,39,.48);backdrop-filter:blur(3px)}
+.modal-sheet{max-width:560px;border-radius:18px;padding:24px;box-shadow:0 24px 70px rgba(17,24,39,.2)}
+.modal-title{font-size:20px;letter-spacing:-.025em}.modal-subtitle{font-size:12px}
+.modal-section-label{font-size:10px;color:#6b7280}.modal-vehicle-grid{gap:8px}.modal-vehicle-card{border-radius:11px;padding:10px 12px}.modal-vehicle-card-selected{border-color:var(--ref-gold);background:var(--ref-gold-soft)}
+.modal-vehicle-icon{width:48px;height:38px;border-radius:8px;background:#f7f8fa}.modal-vehicle-name{font-size:13px}.modal-vehicle-number{font-size:11px}.modal-vehicle-meta{font-size:9px}
+.modal-price-box{background:#eff6ff;border-color:#bfdbfe;border-radius:11px;padding:14px}.modal-price-value{font-size:30px}.modal-actions .btn-primary{background:var(--ref-gold)}
+
+/* Slot grid */
+.slot-legend{gap:14px;margin-bottom:12px}.slot-legend-item{font-size:10px}.slot-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.slot-card{min-height:58px;padding:8px 5px;border-radius:8px}.slot-card-number{font-size:12px}.slot-card-type,.slot-card-status{font-size:8px}
+.slot-card-available{border-color:#cfe5d6;background:#f7fcf8}.slot-card-selected{border-color:#f5b800;background:#fff7d9;box-shadow:0 0 0 2px rgba(245,184,0,.12);transform:none}.slot-card-booked{background:#fff5f5;border-color:#fbd1d1}
+
+/* Settings */
+.settings-section,.settings-card,.settings-item{border-radius:12px!important}.settings-card,.settings-section{border-color:var(--ref-border)!important;box-shadow:0 4px 14px rgba(17,24,39,.04)!important}
+
+@media (max-width:900px){.page-content,.page-content-narrow{padding:18px 16px 84px}.explore-list,.vehicles-grid{grid-template-columns:1fr 1fr}.parking-map-container{height:420px}}
+@media (max-width:640px){.navbar{height:58px}.navbar-inner{height:58px;padding:0 14px}.navbar-logo-text{font-size:16px}.navbar-logo-mark{width:30px;height:30px}.page-content,.page-content-narrow{padding:14px 12px 84px}.explore-list,.vehicles-grid{grid-template-columns:1fr}.parking-map-container{height:390px}.slot-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.modal-sheet{max-height:94vh;padding:20px 16px 24px}.bottom-tab-bar{padding-top:7px}.bottom-tab-item{font-size:9px;padding:5px 8px}.bottom-tab-item svg{width:18px;height:18px}}
+
+
+/* =========================================================
+   VEHICLES - UI POLISH
+   ========================================================= */
+
+.vehicles-grid {
+  gap: 18px;
+}
+
+.vehicle-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 16px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.vehicle-card-default-marker {
+  top: 14px;
+  right: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 9px;
+  border-radius: 999px;
+}
+
+.vehicle-card-header {
+  gap: 14px;
+}
+
+.vehicle-icon-box {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vehicle-card-name {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.vehicle-card-number {
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.vehicle-card-meta {
+  margin-top: 8px !important;
+}
+
+.vehicle-card-actions {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+}
+
+.vehicle-card-actions button {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.vehicle-card-actions button:hover {
+  transform: translateY(-1px);
+}
+
+.vehicle-card-actions .btn-secondary,
+.vehicle-card-actions .btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Vehicle form improvements */
+
+.form-modal {
+  border-radius: 18px;
+}
+
+.form-modal-title {
+  letter-spacing: -0.02em;
+}
+
+.field-label {
+  font-weight: 600;
+}
+
+.field-input {
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.field-input:focus {
+  outline: none;
+}
+
+.error-text {
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  .vehicle-card {
+    padding: 16px;
+  }
+
+  .vehicle-card-actions {
+    flex-direction: column;
+  }
+
+  .vehicle-card-actions button {
+    width: 100%;
+  }
+
+  .form-modal {
+    width: calc(100% - 24px);
+    max-height: calc(100vh - 24px);
+    overflow-y: auto;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== ParkEase: Mobile bottom navigation (append to end of reference-ui.css) ===== */
+
+/* Hidden by default (desktop) */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 4px;
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    z-index: 1000;
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12),
+      0 2px 6px rgba(15, 23, 42, 0.06);
+  }
+
+  .mobile-bottom-nav__item {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 7px 4px;
+    border-radius: 14px;
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.1;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .mobile-bottom-nav__item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .mobile-bottom-nav__item:focus-visible {
+    outline: 2px solid #c9a227;
+    outline-offset: 2px;
+  }
+
+  .mobile-bottom-nav__item.is-active {
+    background: #fff6dc;
+    color: #8a6a00;
+  }
+
+  /* Keep the last Dashboard content clear of the fixed bar */
+  main.dash.dash-has-mobile-nav {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* =========================================================
+   PARK EASE - MULTI STEP BOOKING FLOW
+   ========================================================= */
+
+.booking-start-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface, #fff);
+}
+
+.booking-start-card-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.booking-start-eyebrow {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--primary);
+}
+
+.booking-start-card h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.booking-start-card p {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.booking-start-stats {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--surface-secondary, #f5f7fa);
+  color: var(--text-secondary);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.booking-lot-selector {
+  margin-top: 20px;
+}
+
+.booking-lot-selector label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.booking-lot-selector select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface, #fff);
+  color: var(--text);
+}
+
+.booking-start-button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+/* Overlay */
+
+.booking-flow-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(5px);
+}
+
+
+/* Modal */
+
+.booking-flow-modal {
+  width: min(680px, 100%);
+  max-height: min(820px, calc(100vh - 48px));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  background: var(--surface, #fff);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.25);
+}
+
+
+/* Top */
+
+.booking-flow-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px 0;
+}
+
+.booking-flow-location {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-secondary);
+}
+
+.booking-flow-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-secondary, #f5f7fa);
+  color: var(--text-secondary);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.booking-flow-close:hover {
+  background: var(--border);
+}
+
+
+/* Progress */
+
+.booking-flow-progress {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 20px 22px 4px;
+}
+
+.booking-flow-progress-step {
+  flex: 1;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: var(--border);
+}
+
+.booking-flow-progress-step.active {
+  background: var(--primary);
+}
+
+.booking-flow-progress-step span {
+  display: none;
+}
+
+
+/* Heading */
+
+.booking-flow-heading {
+  padding: 20px 22px 16px;
+}
+
+.booking-flow-step-label {
+  margin: 0 0 5px;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+}
+
+.booking-flow-heading h2 {
+  margin: 0;
+  font-size: 25px;
+  letter-spacing: -0.025em;
+}
+
+.booking-flow-heading p {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+
+/* Body */
+
+.booking-flow-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 4px 22px 22px;
+}
+
+.booking-step-content {
+  width: 100%;
+}
+
+
+/* Error */
+
+.booking-flow-error-message {
+  margin: 0 22px 14px;
+  padding: 11px 13px;
+  border-radius: 10px;
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+
+/* Vehicle */
+
+.booking-vehicle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.booking-vehicle-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface, #fff);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.booking-vehicle-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 7px 20px rgba(15, 23, 42, 0.07);
+}
+
+.booking-vehicle-card.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.booking-vehicle-icon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--surface-secondary, #f5f7fa);
+  font-size: 21px;
+}
+
+.booking-vehicle-info {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.booking-vehicle-info strong {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.booking-vehicle-info span {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.booking-vehicle-info small {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: capitalize;
+}
+
+.booking-radio {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.booking-vehicle-card.selected .booking-radio {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+
+
+/* Date */
+
+.booking-date-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--surface-secondary, #f5f7fa);
+}
+
+.booking-step-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--surface, #fff);
+  font-size: 21px;
+}
+
+.booking-date-card h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.booking-date-card p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.booking-field {
+  display: block;
+}
+
+.booking-field span {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.booking-field input {
+  width: 100%;
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 0 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--surface, #fff);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.booking-field input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* Time */
+
+.booking-time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.booking-duration-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 13px;
+  background: var(--surface-secondary, #f5f7fa);
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.booking-duration-card strong {
+  color: var(--text);
+}
+
+
+/* Slots */
+
+.booking-slot-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.booking-slot-summary > div {
+  min-width: 0;
+  padding: 11px;
+  border-radius: 11px;
+  background: var(--surface-secondary, #f5f7fa);
+}
+
+.booking-slot-summary span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.booking-slot-summary strong {
+  display: block;
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.booking-slot-grid-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+
+/* Review */
+
+.booking-review-card {
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.booking-review-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 16px;
+}
+
+.booking-review-row span {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.booking-review-row strong {
+  color: var(--text);
+  font-size: 13px;
+  text-align: right;
+}
+
+.booking-review-divider {
+  height: 1px;
+  background: var(--border);
+}
+
+.booking-review-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 16px;
+  background: var(--surface-secondary, #f5f7fa);
+}
+
+.booking-review-total span {
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.booking-review-total strong {
+  font-size: 20px;
+}
+
+
+/* Footer */
+
+.booking-flow-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 22px;
+  border-top: 1px solid var(--border);
+  background: var(--surface, #fff);
+}
+
+.booking-footer-spacer {
+  flex: 1;
+}
+
+.booking-back-button {
+  min-width: 90px;
+}
+
+
+/* Success */
+
+.booking-success {
+  padding: 10px 0 4px;
+  text-align: center;
+}
+
+.booking-success-icon {
+  width: 68px;
+  height: 68px;
+  margin: 4px auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success, #16a34a);
+  font-size: 34px;
+  font-weight: 750;
+}
+
+.booking-success h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.booking-success > p {
+  margin: 7px 0 22px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.booking-success-ticket {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  text-align: left;
+}
+
+.booking-success-ticket > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+}
+
+.booking-success-ticket span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.booking-success-ticket strong {
+  font-size: 13px;
+}
+
+.booking-success-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+/* Empty/loading */
+
+.booking-flow-loading {
+  padding: 30px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.booking-flow-empty {
+  padding: 30px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.booking-flow-empty-state {
+  padding: 35px 20px;
+  text-align: center;
+}
+
+.booking-flow-empty-icon {
+  margin-bottom: 10px;
+  font-size: 34px;
+}
+
+.booking-flow-empty-state h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.booking-flow-empty-state p {
+  max-width: 400px;
+  margin: 7px auto 18px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  .booking-flow-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .booking-flow-modal {
+    width: 100%;
+    max-height: 94vh;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .booking-flow-topbar {
+    padding: 15px 17px 0;
+  }
+
+  .booking-flow-progress {
+    padding: 17px 17px 3px;
+  }
+
+  .booking-flow-heading {
+    padding: 16px 17px 13px;
+  }
+
+  .booking-flow-heading h2 {
+    font-size: 22px;
+  }
+
+  .booking-flow-body {
+    padding: 4px 17px 18px;
+  }
+
+  .booking-flow-footer {
+    padding: 13px 17px;
+  }
+
+  .booking-time-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-slot-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .booking-slot-summary > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .booking-slot-grid-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .booking-start-card {
+    padding: 18px;
+  }
+
+  .booking-start-card-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .booking-success-ticket {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-success-actions {
+    flex-direction: column-reverse;
+  }
+
+  .booking-success-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .booking-slot-grid-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

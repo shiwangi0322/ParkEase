@@ -1,181 +1,123 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
-import parkingScene from "../assets/parking-scene.png";
-
+import carImage from "../assets/CAR.png";
+import bikeImage from "../assets/bike.png";
+import scooterImage from "../assets/SCOOTER.png";
 import "./Splash.css";
 
+const rides = [
+  { name: "Car", image: carImage, alt: "Red car" },
+  { name: "Motorbike", image: bikeImage, alt: "Black motorbike" },
+  { name: "Scooter", image: scooterImage, alt: "White electric scooter" },
+];
+
 function Splash() {
-  const navigate = useNavigate();
-
-  const goToLogin = () => {
-    navigate("/login");
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault(); // stop Space from scrolling the page
-      if (!event.repeat) goToLogin();
-    }
-  };
-
   return (
-    <main
-      className="park-splash"
-      onClick={goToLogin}
-      onKeyDown={handleKeyDown}
-      role="link"
-      tabIndex={0}
-      aria-label="Open ParkEase and continue to login"
-    >
-      <section className="park-splash-frame">
-        {/* Soft background light */}
-        <div className="park-glow park-glow-blue" aria-hidden="true" />
-        <div className="park-glow park-glow-yellow" aria-hidden="true" />
-        <div className="park-grid" aria-hidden="true" />
+    <main className="landing-page">
+      <header className="landing-header">
+        <Link className="landing-brand" to="/" aria-label="ParkEase home">
+          <span className="landing-brand-mark" aria-hidden="true">P</span>
+          <span className="landing-brand-name">
+            Park<span>Ease</span>
+          </span>
+        </Link>
 
-        {/* ================= TOP SECTION ================= */}
-        <header className="park-top">
-          <div className="park-logo-row park-reveal" style={{ "--i": 0 }}>
-            {/* P logo mark */}
-            <svg
-              className="park-logo-mark"
-              viewBox="0 0 126 146"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <defs>
-                <clipPath id="park-logo-clip">
-                  <path d="M14 6H64C92 6 112 26 112 52C112 78 92 98 64 98H46V126C46 132 42 136 36 136H24C18 136 14 132 14 126Z" />
-                </clipPath>
-                <linearGradient id="park-logo-grad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stopColor="#1D6BF0" />
-                  <stop offset="1" stopColor="#0B4FD6" />
-                </linearGradient>
-              </defs>
+        <div className="landing-header-actions">
+          <Link className="landing-login-link" to="/login">
+            Log in
+          </Link>
+          <Link className="landing-header-cta" to="/register">
+            Sign up <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </header>
 
-              {/* Blue P with white counter */}
-              <path
-                d="M14 6H64C92 6 112 26 112 52C112 78 92 98 64 98H46V126C46 132 42 136 36 136H24C18 136 14 132 14 126Z M46 28H62C73 28 82 38 82 52C82 66 73 76 62 76H46Z"
-                fill="url(#park-logo-grad)"
-                fillRule="evenodd"
-              />
+      <section className="landing-hero" aria-labelledby="landing-title">
+        <div className="landing-intro">
+          <span className="landing-eyebrow">YOUR NEXT STOP STARTS HERE</span>
+          <h1 id="landing-title">
+            Parking, <span>made easy.</span>
+          </h1>
+          <p>Find a spot. Book ahead. Go.</p>
+        </div>
 
-              {/* Yellow accent stripe */}
-              <g clipPath="url(#park-logo-clip)">
-                <polygon points="8,100 52,80 52,96 8,118" fill="#F5A623" />
-              </g>
-
-              {/* Car icon in the counter */}
-              <g
-                fill="none"
-                stroke="#0B5CE6"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M52 56l3.5-9.5h17L76 56" />
-                <rect x="49.5" y="56" width="29" height="11" rx="3.5" />
-              </g>
-              <circle cx="56" cy="61.5" r="1.7" fill="#0B5CE6" />
-              <circle cx="72" cy="61.5" r="1.7" fill="#0B5CE6" />
-
-              {/* Bike icon on the stem */}
-              <g
-                fill="none"
-                stroke="#FFFFFF"
-                strokeWidth="2.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="22.5" cy="123" r="3.6" />
-                <circle cx="37.5" cy="123" r="3.6" />
-                <path d="M22.5 123l5-7h6l4 7M27.5 116l-1.5-2.5" />
-              </g>
-            </svg>
-
-            <div className="park-wordmark">
-              <h1 className="park-title">
-                Park<em>Ease</em>
-              </h1>
-              <p className="park-tagline">
-                Find <b>•</b> Reserve <b>•</b> Park
-              </p>
-            </div>
+        <div className="landing-scene" aria-label="Parking for every kind of ride">
+          <div className="landing-sky-orb landing-sky-orb-left" />
+          <div className="landing-sky-orb landing-sky-orb-center" />
+          <div className="landing-sky-orb landing-sky-orb-right" />
+          <div className="landing-skyline" aria-hidden="true">
+            <i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i />
           </div>
-
-          <p className="park-subtitle park-reveal" style={{ "--i": 1 }}>
-            <span>Smart Parking</span> for a Smoother Ride
-          </p>
-
-          <ul className="park-features park-reveal" style={{ "--i": 2 }}>
-            <li className="park-feature">
-              <span className="park-feature-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M12 7v5l3 2" />
-                </svg>
-              </span>
-              <span className="park-feature-text">
-                Real-Time
-                <br />
-                Availability
-              </span>
-            </li>
-
-            <li className="park-feature">
-              <span className="park-feature-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" />
-                  <path d="M9 12l2 2 4-4" />
-                </svg>
-              </span>
-              <span className="park-feature-text">
-                Secure
-                <br />
-                Booking
-              </span>
-            </li>
-
-            <li className="park-feature">
-              <span className="park-feature-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" />
-                  <circle cx="12" cy="10" r="2.5" />
-                </svg>
-              </span>
-              <span className="park-feature-text">
-                Nearby
-                <br />
-                Locations
-              </span>
-            </li>
-          </ul>
-        </header>
-
-        {/* ================= PARKING SCENE ================= */}
-        <div className="park-scene park-reveal-scene">
+          <div className="landing-parking-floor" aria-hidden="true">
+            <span className="landing-parking-line landing-parking-line-one" />
+            <span className="landing-parking-line landing-parking-line-two" />
+            <span className="landing-parking-line landing-parking-line-three" />
+          </div>
+          <div className="landing-pin" aria-hidden="true">
+            <span>P</span>
+          </div>
           <img
-            src={parkingScene}
-            alt="A red car, a motorbike and a scooter parked in marked bays at a ParkEase parking lot"
-            className="park-scene-img"
-            draggable="false"
+            src={carImage}
+            alt="Red car"
+            className="landing-vehicle landing-vehicle-car"
+            fetchPriority="high"
           />
+          <img
+            src={bikeImage}
+            alt="Black motorbike"
+            className="landing-vehicle landing-vehicle-bike"
+          />
+          <img
+            src={scooterImage}
+            alt="White electric scooter"
+            className="landing-vehicle landing-vehicle-scooter"
+          />
+        </div>
+        <Link className="landing-primary-cta" to="/register">
+          Get started <ArrowRight size={17} aria-hidden="true" />
+        </Link>
+      </section>
 
-          {/* Live availability chip */}
-          <div className="park-live" aria-hidden="true">
-            <span className="park-live-dot" />
-            Live availability
-          </div>
-
-          {/* Call to action (whole screen is clickable) */}
-          <div className="park-cta" aria-hidden="true">
-            <span>Tap anywhere to get started</span>
-            <svg viewBox="0 0 24 24" focusable="false">
-              <path d="M9 6l6 6-6 6" />
-            </svg>
-          </div>
+      <section className="landing-rides" aria-label="Choose your ride">
+        <div className="landing-rides-heading">
+          <span>ONE EASY BOOKING</span>
+          <h2>Every ride welcome.</h2>
+        </div>
+        <div className="landing-ride-list">
+          {rides.map((ride) => (
+            <Link
+              className={`landing-ride-card landing-ride-card--${ride.name.toLowerCase()}`}
+              key={ride.name}
+              to="/register"
+              aria-label={`Get started with your ${ride.name.toLowerCase()}`}
+            >
+              <span className="landing-ride-image">
+                <img src={ride.image} alt={ride.alt} loading="lazy" />
+              </span>
+              <span className="landing-ride-name">{ride.name}</span>
+              <ArrowRight
+                className="landing-ride-arrow"
+                size={17}
+                aria-hidden="true"
+              />
+            </Link>
+          ))}
         </div>
       </section>
+
+      <footer className="landing-footer">
+        <Link className="landing-brand landing-footer-brand" to="/">
+          <span className="landing-brand-mark" aria-hidden="true">P</span>
+          <span className="landing-brand-name">
+            Park<span>Ease</span>
+          </span>
+        </Link>
+        <span>Park. Book. Go.</span>
+        <Link className="landing-footer-link" to="/register">
+          Sign up <ArrowRight size={15} aria-hidden="true" />
+        </Link>
+      </footer>
     </main>
   );
 }

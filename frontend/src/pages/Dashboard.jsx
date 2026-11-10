@@ -1020,7 +1020,7 @@ function Dashboard() {
       >
 
         <Link
-          to="/"
+          to="/dashboard"
           className="mobile-dashboard-nav__item active"
         >
 
